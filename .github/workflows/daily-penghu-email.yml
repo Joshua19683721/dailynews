@@ -23,7 +23,7 @@ jobs:
 
       - name: Gather travel headlines and send email
         env:
-          SMTP_USERNAME: wdtung0419@gmail.com
+          SMTP_USERNAME: fashionbuy.org@gmail.com
           SMTP_APP_PASSWORD: ${{ secrets.WEBSITESMTP1 }}
           EMAIL_TO: wdtung0419@gmail.com
         run: python scripts/daily_penghu_email.py
