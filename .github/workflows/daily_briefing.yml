@@ -22,7 +22,7 @@ jobs:
 
       - name: Send daily briefing
         env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_USER: fashionbuy.org@gmail.com
+          GMAIL_APP_PASSWORD: ${{ secrets.WEBSITESMTP1 }}
           MAIL_TO: wdtung@gmail.com
         run: python scripts/daily_penghu_email.py
