@@ -1,0 +1,29 @@
+name: Daily Penghu travel email
+
+on:
+  schedule:
+    # 10:00 Taiwan time (UTC+8) = 02:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send-daily-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Gather travel headlines and send email
+        env:
+          SMTP_USERNAME: wdtung0419@gmail.com
+          SMTP_APP_PASSWORD: ${{ secrets.WEBSITESMTP1 }}
+          EMAIL_TO: wdtung0419@gmail.com
+        run: python scripts/daily_penghu_email.py
