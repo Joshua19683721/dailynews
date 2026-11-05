@@ -1,4 +1,4 @@
-name: Daily Penghu travel email
+name: Daily student activities (alternate recipient)
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Gather travel headlines and send email
+      - name: Gather student activities and send email
         env:
           SMTP_USERNAME: fashionbuy.org@gmail.com
           SMTP_APP_PASSWORD: ${{ secrets.WEBSITESMTP1 }}
