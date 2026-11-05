@@ -39,7 +39,9 @@ def build_queries():
             "intitle:(國小 OR 小學) "
             "(比賽 OR 競賽 OR 徵件 OR 甄選 OR 盃) "
             "(2026 OR 2027) "
-            "(網路 OR 線上 OR 網頁 OR 電腦 OR 數位)",
+            "(網路 OR 線上 OR 網頁 OR 電腦 OR 數位) "
+            "(AI OR 人工智慧 OR 程式 OR Scratch OR 機器人 OR 創客 "
+            "OR Maker OR SDGs OR 永續 OR 氣候變遷)",
         ),
     )
 
