@@ -1,4 +1,4 @@
-name: Daily Penghu briefing
+name: Daily student activities
 
 on:
   schedule:
@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Send daily briefing
+      - name: Send student activities email
         env:
           GMAIL_USER: fashionbuy.org@gmail.com
           GMAIL_APP_PASSWORD: ${{ secrets.WEBSITESMTP1 }}
