@@ -23,9 +23,7 @@ MAX_ITEMS_PER_QUERY = 5
 RSS_BASE = "https://news.google.com/rss/search"
 
 
-def build_queries(today):
-    recent_cutoff = (today - timedelta(days=30)).isoformat()
-    upcoming_cutoff = (today - timedelta(days=90)).isoformat()
+def build_queries():
     return (
         ("花火節日期與公告", "澎湖國際海上花火節 2027 日期 公告"),
         ("花火節相關消息", "澎湖花火節 2027"),
@@ -37,22 +35,11 @@ def build_queries(today):
         ("澎湖旅遊、美食、住宿與景點", "澎湖旅遊 美食 住宿 景點"),
         ("澎湖租汽機車與優惠", "澎湖 租汽車 租機車 優惠"),
         (
-            "教育雲端帳號｜國小學生近期活動",
-            f'"澎湖縣教育雲端帳號" 活動 國小 報名 after:{recent_cutoff}',
-        ),
-        (
-            "澎湖教育雲／學生帳號｜近期活動與競賽",
-            f"澎湖縣 教育雲 學生帳號 國小 活動 OR 競賽 after:{recent_cutoff}",
-        ),
-        (
-            "澎湖官方教育與學校網站｜學生近期活動",
-            "(site:penghu.gov.tw OR site:ph.edu.tw) 澎湖 國小 學生 "
-            f"活動 報名 after:{recent_cutoff}",
-        ),
-        (
-            "教育雲端帳號｜近期公告的即將開始活動",
-            '"澎湖縣教育雲端帳號" (即將 OR 報名 OR 開始 OR 活動) '
-            f"after:{upcoming_cutoff}",
+            "教育活動｜國小網路／數位競賽（2026–2027）",
+            "intitle:(國小 OR 小學) "
+            "(比賽 OR 競賽 OR 徵件 OR 甄選 OR 盃) "
+            "(2026 OR 2027) "
+            "(網路 OR 線上 OR 網頁 OR 電腦 OR 數位)",
         ),
     )
 
@@ -109,9 +96,7 @@ def collect_news():
     sections = []
     failures = []
     seen_links = set()
-    today = datetime.now(TAIPEI_TZ).date()
-
-    for heading, query in build_queries(today):
+    for heading, query in build_queries():
         try:
             results = fetch_news(query)
         except (urllib.error.URLError, TimeoutError, ET.ParseError) as error:
